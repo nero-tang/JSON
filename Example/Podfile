@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'JSON_Example' do
+  pod 'JSON', :path => '../'
+
+  target 'JSON_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
