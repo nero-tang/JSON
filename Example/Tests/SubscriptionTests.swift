@@ -10,6 +10,21 @@ import XCTest
 import JSON
 
 class SubscriptionTests: XCTestCase {
+    
+    func testNonLiteralIndex() {
+        let json: JSON = [
+            "array": [0],
+            "dictionary": [
+                "a": "b",
+            ]
+        ]
+        
+        let keyA = 0
+        let keyB = "a"
+        
+        XCTAssertEqual(json["array", keyA].intValue, 0)
+        XCTAssertEqual(json["dictionary", keyB].stringValue, "b")
+    }
 
     func testArrayAllNumber() {
         var json: JSON = [1, 2.0, 3.3, 123456789, 987654321.123456789]
@@ -89,7 +104,7 @@ class SubscriptionTests: XCTestCase {
         XCTAssertEqual(json[1]["b"], JSON("B"))
         XCTAssertNotNil(json[2]["null"].null)
         XCTAssertNotNil(json[2, "null"].null)
-        let keys: [JSON.Index] = [1, "a"]
+        let keys: [JSONIndexType] = [1, "a"]
         XCTAssertEqual(json[keys], JSON(rawValue: "A")!)
     }
 
@@ -203,7 +218,7 @@ class SubscriptionTests: XCTestCase {
         XCTAssertEqual(json[[0, 0, 0, 0, "name"]].stringValue, "Jack")
         json[[0, 0, 0, 0, "name"]].string = "Mike"
         XCTAssertEqual(json[0, 0, 0, 0, "name"].stringValue, "Mike")
-        let path: [JSON.Index] = [0, 0, 0, 0, "name"]
+        let path: [JSONIndexType] = [0, 0, 0, 0, "name"]
         json[path].string = "Jim"
         XCTAssertEqual(json[path].stringValue, "Jim")
     }

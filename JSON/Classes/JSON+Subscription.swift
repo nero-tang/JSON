@@ -7,24 +7,31 @@
 
 import Foundation
 
+public enum JSONIndex {
+    
+    case int(Int)
+    
+    case string(String)
+}
+
+public protocol JSONIndexType {
+    
+    var jsonIndex: JSONIndex { get }
+}
+
+extension Int: JSONIndexType {
+    
+    public var jsonIndex: JSONIndex { .int(self) }
+}
+
+extension String: JSONIndexType {
+    
+    public var jsonIndex: JSONIndex { .string(self) }
+}
+
 extension JSON {
     
-    public enum Index: ExpressibleByStringLiteral, ExpressibleByIntegerLiteral {
-        
-        case int(Int)
-        
-        case string(String)
-        
-        public init(stringLiteral value: String) {
-            self = .string(value)
-        }
-        
-        public init(integerLiteral value: Int) {
-            self = .int(value)
-        }
-    }
-    
-    private subscript(index index: Index) -> JSON {
+    private subscript(index: JSONIndex) -> JSON {
         get {
             switch index {
             case .int(let index):
@@ -43,7 +50,7 @@ extension JSON {
         }
     }
     
-    public subscript(_ indices: Index...) -> JSON {
+    public subscript(indices: JSONIndexType...) -> JSON {
         get {
             return self[indices]
         }
@@ -52,9 +59,9 @@ extension JSON {
         }
     }
     
-    public subscript(_ indices: [Index]) -> JSON {
+    public subscript(indices: [JSONIndexType]) -> JSON {
         get {
-            return indices.reduce(self) { $0[index: $1] }
+            return indices.reduce(self) { $0[$1.jsonIndex] }
         }
         set {
             if indices.isEmpty {
@@ -63,9 +70,9 @@ extension JSON {
                 var indices = indices
                 let firstIndex = indices.removeFirst()
                 
-                var subJSON = self[index: firstIndex]
+                var subJSON = self[firstIndex.jsonIndex]
                 subJSON[indices] = newValue
-                self[index: firstIndex] = subJSON
+                self[firstIndex.jsonIndex] = subJSON
             }
         }
     }
@@ -128,25 +135,5 @@ extension JSON {
         set {
             self[key: member] = newValue
         }
-    }
-    
-}
-
-protocol JSONIndexConvertible {
-    
-    var jsonIndex: JSON.Index { get }
-}
-
-extension Int {
-    
-    var jsonIndex: JSON.Index {
-        return .int(self)
-    }
-}
-
-extension String {
-    
-    var jsonIndex: JSON.Index {
-        return .string(self)
     }
 }
