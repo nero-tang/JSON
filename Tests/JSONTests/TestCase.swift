@@ -1,5 +1,5 @@
 import XCTest
-import JSON
+@testable import JSON
 
 class TestCase: XCTestCase {
     
@@ -9,7 +9,7 @@ class TestCase: XCTestCase {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
         
-        guard let fileURL = Bundle(for: TestCase.self).url(forResource: "Test", withExtension: "json") else {
+        guard let fileURL = Bundle.module.url(forResource: "Test", withExtension: "json") else {
             XCTFail("Can't locate Test.json")
             return
         }

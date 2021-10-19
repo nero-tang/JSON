@@ -1,24 +1,26 @@
 # JSON
 
-[![CI Status](https://img.shields.io/travis/nero-tang/JSON.svg?style=flat)](https://travis-ci.org/nero-tang/JSON)
 [![Version](https://img.shields.io/cocoapods/v/JSON.svg?style=flat)](https://cocoapods.org/pods/JSON)
 [![License](https://img.shields.io/cocoapods/l/JSON.svg?style=flat)](https://cocoapods.org/pods/JSON)
 [![Platform](https://img.shields.io/cocoapods/p/JSON.svg?style=flat)](https://cocoapods.org/pods/JSON)
-
-## Example
-
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
-
-## Requirements
-
+  
 ## Installation
 
-JSON is available through [CocoaPods](https://cocoapods.org). To install
-it, simply add the following line to your Podfile:
+### Cocoapods
+
+To install `JSON` via [CocoaPods](https://cocoapods.org), simply add the following line to your `Podfile`:
 
 ```ruby
-pod 'JSON', git: 'https://github.com/nero-tang/JSON.git', tag: '0.1.0'
+pod 'JSON', git: 'https://github.com/nero-tang/JSON.git', tag: '1.0.0'
 ```
+
+### Swift Package Manager
+
+To install `JSON` via [Swift Package Manager](https://swift.org/package-manager) :
+
+- File > Swift Packages > Add Package Dependency
+- Add `https://github.com/nero-tang/JSON.git`
+- Select "Up to Next Major" with "1.0.0"
 
 ## Author
 

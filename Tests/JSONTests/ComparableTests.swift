@@ -1,6 +1,6 @@
 //
 //  ComparableTests.swift
-//  JSON_Tests
+//  JSONTests
 //
 //  Created by Nero on 2020-02-20.
 //  Copyright © 2020 CocoaPods. All rights reserved.

@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'JSON'
-  s.version          = '0.1.0'
+  s.version          = '1.0.0'
   s.summary          = 'A lightweight JSON wrapper written in Swift'
   s.homepage         = 'https://github.com/nero-tang/JSON'
   s.license          = { :type => 'MIT' }
@@ -11,5 +11,5 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = "9.0"
   s.watchos.deployment_target = "3.0"
   s.tvos.deployment_target = "9.0"
-  s.source_files = 'JSON/Classes/**/*.swift'
+  s.source_files = 'Sources/JSON/*.swift'
 end

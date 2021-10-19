@@ -1,13 +1,13 @@
 //
 //  StringTests.swift
-//  JSON_Tests
+//  JSONTests
 //
 //  Created by Nero on 2020-02-21.
 //  Copyright © 2020 CocoaPods. All rights reserved.
 //
 
 import XCTest
-import JSON
+@testable import JSON
 
 class StringTests: XCTestCase {
 

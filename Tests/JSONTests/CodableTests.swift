@@ -7,7 +7,7 @@
 //
 
 import XCTest
-import JSON
+@testable import JSON
 
 class CodableTests: TestCase {
 
