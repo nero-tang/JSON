@@ -8,5 +8,5 @@
 import Foundation
 
 func NSNumberIsBoolean(_ number: NSNumber) -> Bool {
-    return number === kCFBooleanTrue || number === kCFBooleanFalse
+  number === kCFBooleanTrue || number === kCFBooleanFalse
 }
